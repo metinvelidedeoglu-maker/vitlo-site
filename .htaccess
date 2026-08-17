@@ -3,6 +3,10 @@ Options -Indexes
 
 RewriteEngine On
 
+# Ana stil dosyasina hero duzeltmesini ekle; orig=1 ile orijinal CSS dongusuz yuklenir
+RewriteCond %{QUERY_STRING} !(^|&)orig=1(&|$) [NC]
+RewriteRule ^assets/index-B0UnD_Ry\.css$ assets/hero-fix.css [L]
+
 # /blog fiziksel klasoru ile blog.html cakismasini cozer
 # Options -Indexes nedeniyle /blog 403 vermesin
 RewriteRule ^blog/?$ blog.html [L]
