@@ -10,6 +10,11 @@ RewriteRule ^index\.html$ / [R=301,L,NE]
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html(?:[\s?]|$) [NC]
 RewriteRule ^(.+)\.html$ /$1 [R=301,L,NE]
 
+# /blog temiz URL'si ayni isimli klasorle cakistigi icin arsivi acikca sun
+RewriteCond %{THE_REQUEST} \s/+blog/[\s?] [NC]
+RewriteRule ^blog/$ /blog [R=301,L,NE]
+RewriteRule ^blog$ blog.html [L]
+
 # Temiz URL'leri mevcut .html dosyalarindan dahili olarak sun
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
