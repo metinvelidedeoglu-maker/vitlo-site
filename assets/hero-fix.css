@@ -1,0 +1,5 @@
+@import url('/assets/index-B0UnD_Ry.css?orig=1');
+
+/* Crop away the black artifact baked into vitlo-hero-v2.png. */
+.heroMedia img{transform:scale(2);transform-origin:right bottom;object-position:right bottom}
+@media (max-width:950px){.heroMedia img{transform:scale(1.65);transform-origin:right bottom;object-position:right bottom}}
