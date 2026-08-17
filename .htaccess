@@ -10,9 +10,9 @@ RewriteRule ^index\.html$ / [R=301,L,NE]
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html(?:[\s?]|$) [NC]
 RewriteRule ^(.+)\.html$ /$1 [R=301,L,NE]
 
-# Temiz URL'leri mevcut .html dosyalarindan dahili olarak sun
+# Temiz URL'leri mevcut .html dosyalarindan dahili olarak sun.
+# Ayni adli bir klasor bulunsa bile (ornegin blog/) HTML sayfasini onceliklendir.
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{DOCUMENT_ROOT}/$1.html -f
 RewriteRule ^(.+?)/?$ $1.html [L]
 
