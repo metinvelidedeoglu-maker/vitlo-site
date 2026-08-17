@@ -1,0 +1,7 @@
+@import url('/assets/index-B0UnD_Ry.css?base=1');
+
+html{scroll-behavior:smooth}
+.productsCategoryCard{position:relative;cursor:pointer}
+.productsCategoryCard>a:last-child::after{content:"";position:absolute;inset:0;z-index:10}
+.productsCategoryCard>a:last-child{position:relative;z-index:11}
+.nestedCategorySection{scroll-margin-top:110px}
