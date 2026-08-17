@@ -3,22 +3,18 @@ Options -Indexes
 
 RewriteEngine On
 
-# Ana stil dosyasina hero duzeltmesini ekle; orig=1 ile orijinal CSS dongusuz yuklenir
-RewriteCond %{QUERY_STRING} !(^|&)orig=1(&|$) [NC]
-RewriteRule ^assets/index-B0UnD_Ry\.css$ assets/hero-fix.css [L]
+# Broken homepage hero asset: serve the known-good Vitlo fan image instead.
+RewriteRule ^vitlo-hero-v2\.png$ urun-detaylari/assets/images/TUNEL_AXF_Tunel_Jet_Fani.webp [L]
 
-# /blog fiziksel klasoru ile blog.html cakismasini cozer
-# Options -Indexes nedeniyle /blog 403 vermesin
-RewriteRule ^blog/?$ blog.html [L]
-
-# Eski .html URL'lerini temiz URL'lere kalici yonlendir
+# Old .html URLs -> clean URLs.
 RewriteCond %{THE_REQUEST} \s/+index\.html(?:[\s?]|$) [NC]
 RewriteRule ^index\.html$ / [R=301,L,NE]
 
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html(?:[\s?]|$) [NC]
 RewriteRule ^(.+)\.html$ /$1 [R=301,L,NE]
 
-# Temiz URL'leri mevcut .html dosyalarindan dahili olarak sun
+# Clean URLs -> existing .html files. Physical directories such as /blog/
+# are left alone, so Apache serves /blog/index.html via DirectoryIndex.
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{DOCUMENT_ROOT}/$1.html -f
