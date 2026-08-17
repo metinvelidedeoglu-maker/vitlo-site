@@ -3,6 +3,26 @@ Options -Indexes
 
 RewriteEngine On
 
+# Product page: load the clickable-card CSS wrapper while keeping the original stylesheet intact.
+RewriteCond %{QUERY_STRING} !(^|&)base=1(&|$) [NC]
+RewriteRule ^assets/index-B0UnD_Ry\.css$ assets/product-click.css [L]
+
+# Product category cards -> matching model sections.
+RewriteCond %{QUERY_STRING} ^kategori=aksiyal-fanlar$ [NC]
+RewriteRule ^iletisim/?$ /urunler#modeller-aksiyal-fanlar [R=302,L,NE]
+RewriteCond %{QUERY_STRING} ^kategori=cati-tipi-fanlar$ [NC]
+RewriteRule ^iletisim/?$ /urunler#modeller-cati-tipi-fanlar [R=302,L,NE]
+RewriteCond %{QUERY_STRING} ^kategori=duman-egzost-fanlari$ [NC]
+RewriteRule ^iletisim/?$ /urunler#modeller-duman-egzost-fanlari [R=302,L,NE]
+RewriteCond %{QUERY_STRING} ^kategori=exproof-fanlar$ [NC]
+RewriteRule ^iletisim/?$ /urunler#modeller-exproof-fanlar [R=302,L,NE]
+RewriteCond %{QUERY_STRING} ^kategori=hucreli-fanlar$ [NC]
+RewriteRule ^iletisim/?$ /urunler#modeller-hucreli-fanlar [R=302,L,NE]
+RewriteCond %{QUERY_STRING} ^kategori=kanal-tipi-fanlar$ [NC]
+RewriteRule ^iletisim/?$ /urunler#modeller-kanal-tipi-fanlar [R=302,L,NE]
+RewriteCond %{QUERY_STRING} ^kategori=salyangoz-fanlar$ [NC]
+RewriteRule ^iletisim/?$ /urunler#modeller-salyangoz-fanlar [R=302,L,NE]
+
 # Homepage hero: serve the cleaned WebP asset.
 RewriteRule ^vitlo-hero-v2\.png$ vitlo-hero-clean-20260817.webp [L]
 
