@@ -1,1 +1,0 @@
-Homepage hero source file is intentionally replaced at the tree level with a known-good fan asset to eliminate the corrupted black artifact.
