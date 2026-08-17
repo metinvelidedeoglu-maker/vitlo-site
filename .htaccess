@@ -3,8 +3,17 @@ Options -Indexes
 
 RewriteEngine On
 
-# Broken homepage hero asset: serve the known-good Vitlo fan image instead.
-RewriteRule ^vitlo-hero-v2\.png$ urun-detaylari/assets/images/TUNEL_AXF_Tunel_Jet_Fani.webp [L]
+# Homepage hero: serve the cleaned WebP asset.
+RewriteRule ^vitlo-hero-v2\.png$ vitlo-hero-clean-20260817.webp [L]
+
+# Avoid stale hero caching while the replacement settles.
+<IfModule mod_headers.c>
+<FilesMatch "^(vitlo-hero-v2\.png|vitlo-hero-clean-20260817\.webp)$">
+Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+Header set Pragma "no-cache"
+Header set Expires "0"
+</FilesMatch>
+</IfModule>
 
 # Old .html URLs -> clean URLs.
 RewriteCond %{THE_REQUEST} \s/+index\.html(?:[\s?]|$) [NC]
